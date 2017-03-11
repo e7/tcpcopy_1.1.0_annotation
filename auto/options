@@ -6,12 +6,18 @@ help=no
 
 TC_PREFIX=
 TC_SBIN_PATH=
+# 错误日志路径
 TC_ERROR_LOG_PATH=
+# 配置文件目录
 TC_CONF_PREFIX=
+# 配置文件路径
 TC_CONF_PATH=
+# pid文件目录
 TC_PID_PATH=
 
+# 编译器
 CC=${CC:-cc}
+# 目标文件目录
 TC_OBJS=objs
 
 TC_OFFLINE=NO
@@ -24,12 +30,15 @@ TC_UDP=NO
 TC_PAYLOAD=NO
 TC_DIGEST=NO
 TC_DNAT=NO
+# 是否启用epoll
 TC_EPOLL=YES
+# 是否启用调试模式
 TC_DEBUG=NO
 TC_PF_RING_DIR=NONE
 TC_DETECT_MEMORY=NO
 TC_PCAP_NEEDED=NO
 
+# 编译链接选项
 TC_CC_OPT=
 TC_LD_OPT=
 
@@ -40,9 +49,10 @@ opt=
 
 for option
 do
-    # 格式化带值参数，即如果值中有空格则用单引号包围
+    # 追加参数，如果参数带值并且值中有空格则用单引号包围
     opt="$opt `echo $option | sed -e \"s/\(--[^=]*=\)\(.* .*\)/\1'\2'/\"`"
 
+    # 取参数值(如果有)存到value变量中
     case "$option" in
         -*=*) value=`echo "$option" | sed -e 's/[-_a-zA-Z0-9]*=//'` ;;
            *) value="" ;;

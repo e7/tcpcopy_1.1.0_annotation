@@ -35,8 +35,7 @@ else
 fi
 
 
-# create Makefile
-
+# 创建Makefile文件
 cat << END > Makefile
 
 default:	build
